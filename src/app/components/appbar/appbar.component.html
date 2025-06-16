@@ -9,13 +9,40 @@
     </div>
     <div class="right-section">
         <div>
-            <button>
+            <button mat-button (click)="toggleProfileDropdown()" >
+                <div class="iconlabel">
             <mat-icon>person_outline</mat-icon>
-        </button>
+            <span class="label">Profile</span>
+                </div>
+            </button>
+            <div *ngIf="isProfileOpen" class="profile-dropdown">
+                <div class="menu-header">
+  <p class="welcome-title">Welcome</p>
+  <p class="welcome-subtext">To access account and manage orders</p>
+  <button mat-stroked-button color="warn" class="login-button">LOGIN / SIGNUP</button>
+</div>
+
+<hr />
+
+<div class="menu-item">
+  <mat-icon>shopping_bag</mat-icon>
+  <span>My Orders</span>
+</div>
+
+<div class="menu-item">
+  <mat-icon>favorite_border</mat-icon>
+  <span>Wishlist</span>
+</div>
+
+            </div>
         </div>
     <div>
-        <button>
+            <button mat-button >
+                <div class="iconlabel">
             <mat-icon>shopping_cart</mat-icon>
-        </button></div>
+            <span class="label">Cart</span>
+                </div>
+            </button>
+        </div>
     </div>
 </mat-toolbar>
