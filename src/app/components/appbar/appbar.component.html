@@ -19,7 +19,7 @@
                 <div class="menu-header">
   <p class="welcome-title">Welcome</p>
   <p class="welcome-subtext">To access account and manage orders</p>
-  <button mat-stroked-button color="warn" class="login-button">LOGIN / SIGNUP</button>
+  <button mat-stroked-button color="warn" class="login-button" (click)="openLoginSignup()">LOGIN / SIGNUP</button>
 </div>
 
 <hr />
@@ -46,3 +46,5 @@
         </div>
     </div>
 </mat-toolbar>
+
+<app-login-signup *ngIf="isLoginOpen" (close)="isLoginOpen=false"></app-login-signup>
