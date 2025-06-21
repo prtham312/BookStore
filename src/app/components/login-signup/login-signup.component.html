@@ -6,7 +6,7 @@
         </div>
         <div class="login-right">
             
-                <mat-tab-group class="auth-tab-group">
+                <mat-tab-group [(selectedIndex)]="selectedTabIndex" class="auth-tab-group">
 
                     <mat-tab label="LOGIN">
                         <form [formGroup] = "loginForm" (ngSubmit)="onLoginSubmit()">
@@ -22,7 +22,7 @@
                     <mat-icon>{{ hidepassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </mat-icon>
                 </mat-form-field>
-                <div class="forgot-password">Forgot Password?</div>
+                <div class="forgot-password" (click)="forgot()" >Forgot Password?</div>
                 <button mat-flat-button type="submit" color="warn" class="auth-button">Login</button>
                 <div class="divider">OR</div>
                 <div class="social-buttons">

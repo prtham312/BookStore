@@ -10,17 +10,20 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder , FormGroup , Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ForgotPasswordComponent } from '../../pages/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login-signup',
-  imports: [MatCardModule , CommonModule , MatIconModule , MatFormFieldModule , MatInputModule , MatTabsModule , ReactiveFormsModule  ],
+  imports: [MatCardModule , CommonModule , MatIconModule , MatFormFieldModule , MatInputModule , MatTabsModule , ReactiveFormsModule],
   templateUrl: './login-signup.component.html',
   styleUrl: './login-signup.component.css'
 })
 export class LoginSignupComponent {
+selectedTabIndex = 0;
 @Output() close = new EventEmitter<void>();
 hidepassword = true;
-constructor(private fb : FormBuilder , private authService : AuthService){}
+constructor(private fb : FormBuilder , private authService : AuthService , private router : Router){}
 loginForm! : FormGroup;
 signupForm! : FormGroup;
 ngOnInit(): void{
@@ -71,12 +74,17 @@ onSignupSubmit() : void{
   this.authService.signup(signupData).subscribe({
     next: (res: any) => {
       console.log('Signup successful');
-      this.close.emit();
+      this.selectedTabIndex = 0
+      
     },
     error: (err) => {
       console.error('Signup failed', err);
     }
   });
+}
+forgot(){
+  this.close.emit()
+  this.router.navigate(['dashboard/forgotPassword'])
 }
 
 }
